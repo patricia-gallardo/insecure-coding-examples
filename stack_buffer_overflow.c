@@ -1,8 +1,11 @@
 #include <stdio.h>
 
 /**
+ * Stack-based Buffer Overflow
  * https://cwe.mitre.org/data/definitions/121.html
- * https://cwe.mitre.org/data/definitions/242.html Use of Inherently Dangerous Function
+ *
+ * Use of Inherently Dangerous Function
+ * https://cwe.mitre.org/data/definitions/242.html
  */
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 int main() {

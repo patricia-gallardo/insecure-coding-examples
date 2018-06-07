@@ -2,6 +2,7 @@
 #include <string.h>
 
 /**
+ * Numeric Truncation Error
  * https://cwe.mitre.org/data/definitions/197.html
  */
 int main() {
