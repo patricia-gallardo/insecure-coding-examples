@@ -18,6 +18,7 @@ add_executable(numeric_truncation numeric_truncation.c)
 add_executable(signed_integer_overflow signed_integer_overflow.c)
 
 add_executable(stack_buffer_overflow stack_buffer_overflow.c)
+set_property(TARGET stack_buffer_overflow PROPERTY C_STANDARD 99)
 
 add_executable(uncontrolled_format_string uncontrolled_format_string.c)
 
