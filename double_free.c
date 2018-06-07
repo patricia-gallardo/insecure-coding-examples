@@ -6,13 +6,13 @@
  * https://cwe.mitre.org/data/definitions/415.html
  */
 int main() {
-    char* buffer = (char*)malloc (256);
-    bool error = true;
+  char* buffer = (char*)malloc (256);
+  bool error = true;
 
-    if (error)
-        free(buffer);
+  if (error)
+    free(buffer);
 
-    // [...]
+  // [...]
 
-    free(buffer); // second free
+  free(buffer); // second free
 }

@@ -9,6 +9,6 @@
  */
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 int main() {
-    char buffer[10];
-    gets(buffer); // <- Write outside
+  char buffer[10];
+  gets(buffer); // <- Write outside
 }
