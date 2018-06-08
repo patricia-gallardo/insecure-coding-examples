@@ -17,10 +17,6 @@ add_executable(heap_buffer_overflow heap_buffer_overflow.c)
 # CWE 704 : INCORRECT TYPE CONVERSION
 add_executable(incorrect_type_conversion incorrect_type_conversion.c)
 
-# INFINITE LOOP
-add_executable(infinite_loop infinite_loop.c)
-target_compile_options(infinite_loop PRIVATE -O3 -Waggressive-loop-optimizations)
-
 # INFINITE LOOP CPP
 add_executable(infinite_loop_cpp infinite_loop.cpp)
 target_compile_options(infinite_loop_cpp PRIVATE -O3 -Waggressive-loop-optimizations)
