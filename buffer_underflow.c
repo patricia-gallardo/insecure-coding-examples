@@ -12,7 +12,7 @@ int main() {
   size_t length = strlen(src);
 
   int index = (length -1);
-  while (src[index] != 'x') {
+  while (src[index] != ':') {
     src[index] = '\0';
     index--;
   }
