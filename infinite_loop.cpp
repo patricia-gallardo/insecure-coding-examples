@@ -13,6 +13,4 @@ int main() {
   for(int di = 0; di < 4; di++, delta = mc[di]) {
     cout << di << endl;
   }
-
-  return 0;
 }
