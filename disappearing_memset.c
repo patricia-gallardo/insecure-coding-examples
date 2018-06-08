@@ -1,3 +1,8 @@
+/**
+ * Compiler Removal of Code to Clear Buffers
+ * https://cwe.mitre.org/data/definitions/14.html
+ */
+
 #include <string.h>
 #include <stdbool.h>
 #include <stdlib.h>
