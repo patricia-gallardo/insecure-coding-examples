@@ -1,10 +1,11 @@
-#include <limits.h>
-#include <string.h>
-
 /**
  * Integer Overflow or Wraparound
  * https://cwe.mitre.org/data/definitions/190.html
  */
+
+#include <limits.h>
+#include <string.h>
+
 int main() {
   int first_len = INT_MAX;
   int second_len = 256;

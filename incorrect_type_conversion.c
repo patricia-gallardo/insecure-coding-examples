@@ -1,9 +1,10 @@
-#include <stdlib.h>
-
 /**
  * Incorrect Type Conversion or Cast
  * https://cwe.mitre.org/data/definitions/704.html
  */
+
+#include <stdlib.h>
+
 struct A {};
 struct B {};
 

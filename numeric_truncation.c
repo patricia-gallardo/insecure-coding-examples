@@ -1,10 +1,11 @@
-#include <limits.h>
-#include <string.h>
-
 /**
  * Numeric Truncation Error
  * https://cwe.mitre.org/data/definitions/197.html
  */
+
+#include <limits.h>
+#include <string.h>
+
 int main() {
   unsigned int first_len = UINT_MAX - 256;
   unsigned int second_len = 256;

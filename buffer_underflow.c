@@ -1,9 +1,10 @@
-#include <string.h>
-
 /**
  * Buffer Underwrite ('Buffer Underflow')
  * https://cwe.mitre.org/data/definitions/124.html
  */
+
+#include <string.h>
+
 int main() {
   char src[12];
   strcpy(src, "Hello World");
