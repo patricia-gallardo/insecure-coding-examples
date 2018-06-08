@@ -47,3 +47,17 @@ target_compile_options(unsigned_integer_wraparound PRIVATE -Wno-stringop-overflo
 
 # CWE 416 : USE AFTER FREE
 add_executable(use_after_free vulnerable/use_after_free.c)
+
+add_executable(commandline alternative/commandline.cpp)
+
+add_executable(concat_strings alternative/concat_strings.cpp)
+
+add_executable(downcasting alternative/downcasting.cpp)
+
+add_executable(enum_class alternative/enum_class.cpp)
+
+add_executable(string_literals alternative/string_literals.cpp)
+
+add_executable(strip_after_colon alternative/strip_after_colon.cpp)
+
+add_executable(user_defined_literals alternative/user_defined_literals.cpp)
