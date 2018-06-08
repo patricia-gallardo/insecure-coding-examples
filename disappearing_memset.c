@@ -1,12 +1,15 @@
 #include <string.h>
 #include <stdbool.h>
+#include <stdlib.h>
 
 bool ConnectToMainframe(char *pwd) {
-  return 0;
+  return true;
 }
 
 bool GetPasswordFromUser(char *pwd, size_t pwd_size) {
-  return 0;
+  pwd = (char*) malloc(pwd_size * sizeof(char));
+  strcpy(pwd, "My super secret password");
+  return true;
 }
 
 int main() {
