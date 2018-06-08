@@ -1,13 +1,12 @@
 cmake_minimum_required(VERSION 3.10)
 project(insecure_coding_examples)
 
-set(CMAKE_CXX_STANDARD 11)
-
 # CWE 124 : BUFFER UNDERFLOW
 add_executable(buffer_underflow buffer_underflow.c)
 
 # CWE 14 : DISAPPEARING MEMSET
 add_executable(disappearing_memset disappearing_memset.c)
+target_compile_options(disappearing_memset PRIVATE -O3)
 
 # CWE 415 : DOUBLE FREE
 add_executable(double_free double_free.c)
@@ -40,6 +39,7 @@ add_executable(uncontrolled_format_string uncontrolled_format_string.c)
 
 # UNNAMED LOCK GUARD
 add_executable(unnamed_lock_guard unnamed_lock_guard.cpp)
+target_compile_features(unnamed_lock_guard PRIVATE cxx_std_17)
 
 # CWE 190 : UNSIGNED INTEGER WRAPAROUND
 add_executable(unsigned_integer_wraparound unsigned_integer_wraparound.c)
