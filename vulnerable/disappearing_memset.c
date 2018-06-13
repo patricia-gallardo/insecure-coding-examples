@@ -6,14 +6,16 @@
 #include <string.h>
 #include <stdbool.h>
 #include <stdlib.h>
+#include <stdio.h>
 
 bool ConnectToMainframe(char *pwd) {
+  printf("%s\n", pwd);
   return true;
 }
 
 bool GetPasswordFromUser(char *pwd, size_t pwd_size) {
-  pwd = (char*) malloc(pwd_size * sizeof(char));
-  strcpy(pwd, "My super secret password");
+  strncpy(pwd, "My super secret password", pwd_size);
+  printf("%s\n", pwd);
   return true;
 }
 
