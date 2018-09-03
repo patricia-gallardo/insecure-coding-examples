@@ -66,10 +66,25 @@ add_executable(user_defined_literals alternative/user_defined_literals.cpp)
 
 # Shellcode
 add_executable(shellcode smashing/shellcode.c)
+# keep the assembly
 set_target_properties(shellcode PROPERTIES COMPILE_FLAGS "-save-temps")
-target_compile_options(shellcode PRIVATE -O1)
+# make the code small
+target_compile_options(shellcode PRIVATE -Os)
+# link in execve - check with ldd ./cmake-build-release/shellcode
+set_target_properties(shellcode PROPERTIES LINK_FLAGS "-static")
 
 # Exit code
 add_executable(exitcode smashing/exit.c)
+# keep the assembly
 set_target_properties(exitcode PROPERTIES COMPILE_FLAGS "-save-temps")
-target_compile_options(shellcode PRIVATE -O1)
+# make the code small
+target_compile_options(exitcode PRIVATE -Os)
+# link in exit- check with ldd ./cmake-build-release/exitcode
+set_target_properties(exitcode PROPERTIES LINK_FLAGS "-static")
+
+# Shellcode asm
+add_executable(shellcodeasm smashing/shellcodeasm.c)
+# keep the assembly
+set_target_properties(shellcodeasm PROPERTIES COMPILE_FLAGS "-save-temps")
+# make the code small
+target_compile_options(shellcodeasm PRIVATE -Os)
