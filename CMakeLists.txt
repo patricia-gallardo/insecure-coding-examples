@@ -66,6 +66,10 @@ add_executable(user_defined_literals alternative/user_defined_literals.cpp)
 
 # Shellcode
 add_executable(shellcode smashing/shellcode.c)
+set_target_properties(shellcode PROPERTIES COMPILE_FLAGS "-save-temps")
+target_compile_options(shellcode PRIVATE -O1)
 
 # Exit code
 add_executable(exitcode smashing/exit.c)
+set_target_properties(exitcode PROPERTIES COMPILE_FLAGS "-save-temps")
+target_compile_options(shellcode PRIVATE -O1)
