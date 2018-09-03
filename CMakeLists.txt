@@ -61,3 +61,7 @@ add_executable(string_literals alternative/string_literals.cpp)
 add_executable(strip_after_colon alternative/strip_after_colon.cpp)
 
 add_executable(user_defined_literals alternative/user_defined_literals.cpp)
+
+# From Smashing The Stack For Fun And Profit, Aleph One, Phrack 49
+
+add_executable(shellcode smashing/shellcode.c)
