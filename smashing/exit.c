@@ -1,0 +1,10 @@
+/**
+ * Exit
+ * http://www-inst.eecs.berkeley.edu/~cs161/fa08/papers/stack_smashing.pdf
+ */
+
+ #include <stdlib.h>
+
+int main(void) {
+  exit(EXIT_SUCCESS);
+}

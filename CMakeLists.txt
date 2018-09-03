@@ -64,4 +64,8 @@ add_executable(user_defined_literals alternative/user_defined_literals.cpp)
 
 # From Smashing The Stack For Fun And Profit, Aleph One, Phrack 49
 
+# Shellcode
 add_executable(shellcode smashing/shellcode.c)
+
+# Exit code
+add_executable(exitcode smashing/exit.c)
