@@ -90,3 +90,16 @@ add_executable(shellcodeasm smashing/shellcodeasm.c)
 set_target_properties(shellcodeasm PROPERTIES COMPILE_FLAGS "-save-temps")
 # make the code small
 target_compile_options(shellcodeasm PRIVATE -O0)
+
+# Shellcode test -Wpointer-to-int-cast
+add_executable(testshellcode smashing/test_shellcode.c)
+# keep the assembly
+set_target_properties(testshellcode PROPERTIES COMPILE_FLAGS "-save-temps")
+# make the code small
+target_compile_options(testshellcode PRIVATE -O0)
+# remove warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+target_compile_options(testshellcode PRIVATE -Wno-pointer-to-int-cast)
+# remove the stack protector
+# *** stack smashing detected ***: <unknown> terminated
+# Aborted (core dumped)
+target_compile_options(testshellcode PRIVATE -fno-stack-protector)
