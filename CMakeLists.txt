@@ -89,4 +89,4 @@ add_executable(shellcodeasm smashing/shellcodeasm.c)
 # keep the assembly
 set_target_properties(shellcodeasm PROPERTIES COMPILE_FLAGS "-save-temps")
 # make the code small
-target_compile_options(shellcodeasm PRIVATE -Os)
+target_compile_options(shellcodeasm PRIVATE -O0)
