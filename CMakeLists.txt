@@ -72,6 +72,8 @@ set_target_properties(shellcode PROPERTIES COMPILE_FLAGS "-save-temps")
 target_compile_options(shellcode PRIVATE -Os)
 # link in execve - check with ldd ./cmake-build-release/shellcode
 set_target_properties(shellcode PROPERTIES LINK_FLAGS "-static")
+# remove the stack protector : "call   0x44b950 <__stack_chk_fail_local>"
+target_compile_options(shellcode PRIVATE -fno-stack-protector)
 
 # Exit code
 add_executable(exitcode smashing/exit.c)
