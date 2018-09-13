@@ -103,3 +103,5 @@ target_compile_options(testshellcode PRIVATE -Wno-pointer-to-int-cast)
 # *** stack smashing detected ***: <unknown> terminated
 # Aborted (core dumped)
 target_compile_options(testshellcode PRIVATE -fno-stack-protector)
+# Make the stack executable - otherwise Segmentation fault (core dumped)
+set_target_properties(testshellcode PROPERTIES LINK_FLAGS "-z execstack")
