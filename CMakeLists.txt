@@ -91,7 +91,7 @@ set_target_properties(shellcodeasm PROPERTIES COMPILE_FLAGS "-save-temps")
 # make the code small
 target_compile_options(shellcodeasm PRIVATE -O0)
 
-# Shellcode test -Wpointer-to-int-cast
+# Shellcode test
 add_executable(testshellcode smashing/test_shellcode.c)
 # keep the assembly
 set_target_properties(testshellcode PROPERTIES COMPILE_FLAGS "-save-temps")
@@ -105,3 +105,6 @@ target_compile_options(testshellcode PRIVATE -Wno-pointer-to-int-cast)
 target_compile_options(testshellcode PRIVATE -fno-stack-protector)
 # Make the stack executable - otherwise Segmentation fault (core dumped)
 set_target_properties(testshellcode PROPERTIES LINK_FLAGS "-z execstack")
+
+# Find stackpointer
+add_executable(find_stackpointer handbook/find_stackpointer.c)

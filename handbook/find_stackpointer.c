@@ -1,0 +1,19 @@
+
+/*
+ * From chaper 2 Stack Overflows p. 28
+ * And StackOverflow : https://stackoverflow.com/a/43197401
+ */
+
+#include <stdio.h>
+#include <stdint.h>
+
+intptr_t find_start( void )
+{
+  intptr_t sp;
+  asm( "mov %%rsp, %0" : "=rm" ( sp ));
+  return sp;
+}
+
+int main(void) {
+  printf("0x%lx\n", find_start());
+}
