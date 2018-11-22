@@ -48,6 +48,10 @@ target_compile_options(unsigned_integer_wraparound PRIVATE -Wno-stringop-overflo
 # CWE 416 : USE AFTER FREE
 add_executable(use_after_free vulnerable/use_after_free.c)
 
+# COMPILER OPTIMIZATIONS OF UNDEFINED BEHAVIOR
+add_executable(undefined_behavior vulnerable/undefined_behavior.cpp)
+target_compile_options(undefined_behavior PRIVATE -Wno-overflow)
+
 add_executable(commandline alternative/commandline.cpp)
 
 add_executable(concat_strings alternative/concat_strings.cpp)
