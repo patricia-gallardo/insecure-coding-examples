@@ -7,10 +7,10 @@
 using namespace std;
 
 int main() {
-  complex<int> delta;
-  complex<int> mc[4] = {0};
+  complex<int> next_value;
+  complex<int> values[4] = {0};
 
-  for(int di = 0; di < 4; di++, delta = mc[di]) {
-    cout << di << endl;
+  for (int i = 0; i < 4; i++, next_value = values[i]) {
+    cout << i << endl;
   }
 }
