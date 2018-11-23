@@ -46,6 +46,9 @@ target_compile_options(stack_buffer_overflow PRIVATE -Wno-deprecated-declaration
 # CWE 121 : STACK BUFFER OVERFLOW
 add_executable(stack_buffer_overflow_cwe vulnerable/stack_buffer_overflow_cwe.c)
 
+# CWE-134 : Use of Externally-Controlled Format String
+add_executable(uncontrolled_format_string vulnerable/uncontrolled_format_string.c)
+
 # UNNAMED LOCK GUARD
 add_executable(unnamed_lock_guard vulnerable/unnamed_lock_guard.cpp)
 target_compile_features(unnamed_lock_guard PRIVATE cxx_std_17)
