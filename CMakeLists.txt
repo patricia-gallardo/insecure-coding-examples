@@ -14,6 +14,9 @@ add_executable(double_free vulnerable/double_free.c)
 # CWE 122 : HEAP BUFFER OVERFLOW
 add_executable(heap_buffer_overflow vulnerable/heap_buffer_overflow.c)
 
+# CWE 122 : HEAP BUFFER OVERFLOW
+add_executable(heap_buffer_overflow_cwe vulnerable/heap_buffer_overflow_cwe.c)
+
 # CWE 704 : INCORRECT TYPE CONVERSION
 add_executable(incorrect_type_conversion vulnerable/incorrect_type_conversion.c)
 
@@ -34,8 +37,8 @@ add_executable(stack_buffer_overflow vulnerable/stack_buffer_overflow.c)
 set_property(TARGET stack_buffer_overflow PROPERTY C_STANDARD 99)
 target_compile_options(stack_buffer_overflow PRIVATE -Wno-deprecated-declarations)
 
-# CWE 134 : UNCONTROLLED FORMAT STRING
-add_executable(uncontrolled_format_string vulnerable/uncontrolled_format_string.c)
+# CWE 121 : STACK BUFFER OVERFLOW
+add_executable(stack_buffer_overflow_cwe vulnerable/stack_buffer_overflow_cwe.c)
 
 # UNNAMED LOCK GUARD
 add_executable(unnamed_lock_guard vulnerable/unnamed_lock_guard.cpp)
