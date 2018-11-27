@@ -7,7 +7,7 @@
 
 int main() {
   char src[12];
-  strcpy(src, "Hello World");
+  strncpy(src, "Hello World", sizeof(src));
 
   size_t length = strlen(src);
 
