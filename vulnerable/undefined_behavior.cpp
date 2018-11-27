@@ -7,12 +7,8 @@
 #include <limits.h>
 using namespace std;
 
-int isOnePlusXGreaterThanX(int x) {
- return (x + 1) > x;
-}
-
+int test(int x) { return (x + 1) > x; }
 int main() {
   cout << ((INT_MAX + 1) > INT_MAX) << "\n";
-  cout << isOnePlusXGreaterThanX(INT_MAX) << "\n";
-  return 0;
+  cout << test(INT_MAX) << "\n";
 }
