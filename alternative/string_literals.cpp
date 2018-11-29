@@ -8,6 +8,6 @@ int main() {
   auto heroes = {"Spiderman"s, "Ironman"s, "Wonder Woman"s};
 
   for(auto const & hero : heroes) {
-    std::cout << "\t" << hero << "\n";
+    std::cout << "\t" << hero << " (" << hero.size() << ")\n";
   }
 }
