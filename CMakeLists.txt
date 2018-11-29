@@ -36,6 +36,9 @@ add_executable(signed_integer_overflow vulnerable/signed_integer_overflow.c)
 target_compile_options(signed_integer_overflow PRIVATE -Wno-stringop-overflow)
 
 # CWE 190 : SIGNED INTEGER OVERFLOW
+add_executable(signed_integer_overflow_simple vulnerable/signed_integer_overflow_simple.c)
+
+# CWE 190 : SIGNED INTEGER OVERFLOW
 add_executable(signed_integer_overflow_ubsan vulnerable/signed_integer_overflow_ubsan.c)
 
 # CWE 121 & CWE 242 : STACK BUFFER OVERFLOW
