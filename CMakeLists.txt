@@ -78,13 +78,22 @@ add_executable(downcasting alternative/downcasting.cpp)
 
 add_executable(enum_class alternative/enum_class.cpp)
 
+# Needs clang 7 or gcc 8
+#add_executable(filesystem alternative/filesystem.cpp)
+#target_compile_features(filesystem PRIVATE cxx_std_17)
+
 add_executable(string_literals alternative/string_literals.cpp)
 
 add_executable(strip_after_colon alternative/strip_after_colon.cpp)
 
 add_executable(user_defined_literals alternative/user_defined_literals.cpp)
 
-# From Smashing The Stack For Fun And Profit, Aleph One, Phrack 49
+
+# -----------------------------------------------------------------
+#
+# SMASHING: From Smashing The Stack For Fun And Profit, Aleph One, Phrack 49
+#
+# -----------------------------------------------------------------
 
 # Shellcode
 add_executable(shellcode smashing/shellcode.c)
