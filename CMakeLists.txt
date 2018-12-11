@@ -18,7 +18,7 @@ add_executable(heap_buffer_overflow vulnerable/heap_buffer_overflow.c)
 add_executable(heap_buffer_overflow_cwe vulnerable/heap_buffer_overflow_cwe.c)
 
 # CWE 704 : INCORRECT TYPE CONVERSION
-add_executable(incorrect_type_conversion vulnerable/incorrect_type_conversion.c)
+add_executable(incorrect_type_conversion vulnerable/incorrect_type_conversion.cpp)
 
 # INFINITE LOOP CPP
 add_executable(infinite_loop_cpp vulnerable/infinite_loop.cpp)
