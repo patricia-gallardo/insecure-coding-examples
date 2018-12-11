@@ -1,6 +1,12 @@
 cmake_minimum_required(VERSION 3.10)
 project(insecure_coding_examples)
 
+# -----------------------------------------------------------------
+#
+# VULNERABLE
+#
+# -----------------------------------------------------------------
+
 # CWE 124 : BUFFER UNDERFLOW
 add_executable(buffer_underflow vulnerable/buffer_underflow.c)
 
@@ -70,6 +76,12 @@ add_executable(use_after_free vulnerable/use_after_free.c)
 add_executable(undefined_behavior vulnerable/undefined_behavior.cpp)
 target_compile_options(undefined_behavior PRIVATE -Wno-overflow)
 
+# -----------------------------------------------------------------
+#
+# ALTERNATIVE
+#
+# -----------------------------------------------------------------
+
 add_executable(commandline alternative/commandline.cpp)
 
 add_executable(concat_strings alternative/concat_strings.cpp)
@@ -137,5 +149,25 @@ target_compile_options(testshellcode PRIVATE -fno-stack-protector)
 # Make the stack executable - otherwise Segmentation fault (core dumped)
 set_target_properties(testshellcode PROPERTIES LINK_FLAGS "-z execstack")
 
+# -----------------------------------------------------------------
+#
+# HANDBOOK
+#
+# -----------------------------------------------------------------
+
 # Find stackpointer
 add_executable(find_stackpointer handbook/find_stackpointer.c)
+
+# -----------------------------------------------------------------
+#
+# FORMAT
+#
+# -----------------------------------------------------------------
+
+add_executable(getenvaddr format/getenvaddr.c)
+
+add_executable(format_exploitable format/exploitable.c)
+target_compile_options(format_exploitable PRIVATE -Wno-format-security)
+
+add_executable(format_exploitable_simple format/exploitable_simple.c)
+target_compile_options(format_exploitable_simple PRIVATE -Wno-format-security)
