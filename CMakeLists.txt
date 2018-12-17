@@ -160,7 +160,7 @@ add_executable(find_stackpointer handbook/find_stackpointer.c)
 
 # -----------------------------------------------------------------
 #
-# FORMAT
+# FORMAT: Hacking, the Art of Exploitation (Jon Erickson)
 #
 # -----------------------------------------------------------------
 
@@ -171,3 +171,12 @@ target_compile_options(format_exploitable PRIVATE -Wno-format-security)
 
 add_executable(format_exploitable_simple format/exploitable_simple.c)
 target_compile_options(format_exploitable_simple PRIVATE -Wno-format-security)
+
+# Shellcode test
+add_executable(environment_variable_shellcode format/environment_variable_shellcode.c)
+# remove the stack protector
+# *** stack smashing detected ***: <unknown> terminated
+# Aborted (core dumped)
+target_compile_options(environment_variable_shellcode PRIVATE -fno-stack-protector)
+# Make the stack executable - otherwise Segmentation fault (core dumped)
+set_target_properties(environment_variable_shellcode PROPERTIES LINK_FLAGS "-z execstack")

