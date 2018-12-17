@@ -17,9 +17,9 @@ int main(int argc, char **argv) {
 
   char *pointer = getenv(argv[1]);
 
-  printf("This name %s binary name %s\n", argv[0], argv[2]);
-  int length_difference =  (strlen(argv[0]) - strlen(argv[2]))*2;
-  printf("Length difference %d current pointer %p\n", length_difference, pointer);
-  pointer += length_difference;
-  printf("%s will be at %p\n", argv[1], pointer);
+  int program_length_difference =  (strlen(argv[0]) - strlen(argv[2]))*2;
+  pointer += program_length_difference;
+  size_t variable_length = strlen(argv[1]);
+  pointer -= variable_length;
+  printf("%s will be at %p in %s\n", argv[1], pointer, argv[2]);
 }
