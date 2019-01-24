@@ -180,3 +180,16 @@ add_executable(environment_variable_shellcode format/environment_variable_shellc
 target_compile_options(environment_variable_shellcode PRIVATE -fno-stack-protector)
 # Make the stack executable - otherwise Segmentation fault (core dumped)
 set_target_properties(environment_variable_shellcode PROPERTIES LINK_FLAGS "-z execstack")
+
+# -----------------------------------------------------------------
+#
+# HANDBOOK
+#
+# -----------------------------------------------------------------
+
+# Find stackpointer
+add_executable(launch wargames/launch.c)
+# Get gets
+set_property(TARGET launch PROPERTY C_STANDARD 99)
+# Allow gets
+target_compile_options(launch PRIVATE -Wno-deprecated-declarations)
