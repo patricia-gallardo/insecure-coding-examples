@@ -187,9 +187,19 @@ set_target_properties(environment_variable_shellcode PROPERTIES LINK_FLAGS "-z e
 #
 # -----------------------------------------------------------------
 
-# Find stackpointer
+# Wargames
 add_executable(launch wargames/launch.c)
 # Get gets
 set_property(TARGET launch PROPERTY C_STANDARD 99)
 # Allow gets
 target_compile_options(launch PRIVATE -Wno-deprecated-declarations)
+# Remove Fortify protection in libc
+#*** buffer overflow detected ***: ./launch terminated
+#Aborted (core dumped)
+target_compile_options(launch PRIVATE -D_FORTIFY_SOURCE=0)
+# remove the stack protector
+# *** stack smashing detected ***: <unknown> terminated
+# Aborted (core dumped)
+target_compile_options(launch PRIVATE -fno-stack-protector)
+# Make the stack executable - otherwise Segmentation fault (core dumped)
+#set_target_properties(launch PROPERTIES LINK_FLAGS "-z execstack")
