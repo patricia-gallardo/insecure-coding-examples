@@ -103,4 +103,15 @@ objdump -d shellcode (excerpt)
 
 ## shellcodeasm.c
 
+Regs            Val-1               Val-2
+rdi             0x1	                0x4004a5
+rdx             0x7fffffffdd38	    0x0
+rax             0x400480	        0x3b
+rsp             0x7fffffffdc38	    0x7fffffffdc40
+rsi             0x7fffffffdd28	    0x7fffffffdc40
+
+0x7fffffffdc40 : 0x00000000004004a5
+0x7fffffffdc48 : 0x0000000000000000
+
+
 [1]: http://www-inst.eecs.berkeley.edu/~cs161/fa08/papers/stack_smashing.pdf
