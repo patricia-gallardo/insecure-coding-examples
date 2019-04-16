@@ -183,7 +183,7 @@ set_target_properties(environment_variable_shellcode PROPERTIES LINK_FLAGS "-z e
 
 # -----------------------------------------------------------------
 #
-# HANDBOOK
+# WARGAMES
 #
 # -----------------------------------------------------------------
 
