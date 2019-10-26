@@ -32,14 +32,12 @@ target_compile_options(infinite_loop_cpp PRIVATE -O3 -Waggressive-loop-optimizat
 
 # CWE 197 : NUMERIC TRUNCATION
 add_executable(numeric_truncation vulnerable/numeric_truncation.c)
-target_compile_options(numeric_truncation PRIVATE -Wno-stringop-overflow)
 
 # CWE 197 : NUMERIC TRUNCATION
 add_executable(numeric_truncation_ubsan vulnerable/numeric_truncation_ubsan.c)
 
 # CWE 190 : SIGNED INTEGER OVERFLOW
 add_executable(signed_integer_overflow vulnerable/signed_integer_overflow.c)
-target_compile_options(signed_integer_overflow PRIVATE -Wno-stringop-overflow)
 
 # CWE 190 : SIGNED INTEGER OVERFLOW
 add_executable(signed_integer_overflow_simple vulnerable/signed_integer_overflow_simple.c)
@@ -64,7 +62,6 @@ target_compile_features(unnamed_lock_guard PRIVATE cxx_std_17)
 
 # CWE 190 : UNSIGNED INTEGER WRAPAROUND
 add_executable(unsigned_integer_wraparound vulnerable/unsigned_integer_wraparound.c)
-target_compile_options(unsigned_integer_wraparound PRIVATE -Wno-stringop-overflow)
 
 # CWE 190 : UNSIGNED INTEGER WRAPAROUND
 add_executable(unsigned_integer_wraparound_ubsan vulnerable/unsigned_integer_wraparound_ubsan.c)
