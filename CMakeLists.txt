@@ -105,7 +105,7 @@ add_executable(user_defined_literals practice/user_defined_literals.cpp)
 # -----------------------------------------------------------------
 
 # Shellcode
-add_executable(shellcode smashing/shellcode.c)
+add_executable(shellcode exploit/smashing/shellcode.c)
 # keep the assembly
 set_target_properties(shellcode PROPERTIES COMPILE_FLAGS "-save-temps")
 # make the code small
@@ -116,7 +116,7 @@ set_target_properties(shellcode PROPERTIES LINK_FLAGS "-static")
 target_compile_options(shellcode PRIVATE -fno-stack-protector)
 
 # Exit code
-add_executable(exitcode smashing/exit.c)
+add_executable(exitcode exploit/smashing/exit.c)
 # keep the assembly
 set_target_properties(exitcode PROPERTIES COMPILE_FLAGS "-save-temps")
 # make the code small
@@ -125,14 +125,14 @@ target_compile_options(exitcode PRIVATE -Os)
 set_target_properties(exitcode PROPERTIES LINK_FLAGS "-static")
 
 # Shellcode asm
-add_executable(shellcodeasm smashing/shellcodeasm.c)
+add_executable(shellcodeasm exploit/smashing/shellcodeasm.c)
 # keep the assembly
 set_target_properties(shellcodeasm PROPERTIES COMPILE_FLAGS "-save-temps")
 # make the code small
 target_compile_options(shellcodeasm PRIVATE -O0)
 
 # Shellcode test
-add_executable(testshellcode smashing/test_shellcode.c)
+add_executable(testshellcode exploit/smashing/test_shellcode.c)
 # keep the assembly
 set_target_properties(testshellcode PROPERTIES COMPILE_FLAGS "-save-temps")
 # make the code small
@@ -153,7 +153,7 @@ set_target_properties(testshellcode PROPERTIES LINK_FLAGS "-z execstack")
 # -----------------------------------------------------------------
 
 # Find stackpointer
-add_executable(find_stackpointer handbook/find_stackpointer.c)
+add_executable(find_stackpointer exploit/handbook/find_stackpointer.c)
 
 # -----------------------------------------------------------------
 #
@@ -161,16 +161,16 @@ add_executable(find_stackpointer handbook/find_stackpointer.c)
 #
 # -----------------------------------------------------------------
 
-add_executable(getenvaddr format/getenvaddr.c)
+add_executable(getenvaddr exploit/format/getenvaddr.c)
 
-add_executable(format_exploitable format/exploitable.c)
+add_executable(format_exploitable exploit/format/exploitable.c)
 target_compile_options(format_exploitable PRIVATE -Wno-format-security)
 
-add_executable(format_exploitable_simple format/exploitable_simple.c)
+add_executable(format_exploitable_simple exploit/format/exploitable_simple.c)
 target_compile_options(format_exploitable_simple PRIVATE -Wno-format-security)
 
 # Shellcode test
-add_executable(environment_variable_shellcode format/environment_variable_shellcode.c)
+add_executable(environment_variable_shellcode exploit/format/environment_variable_shellcode.c)
 # remove the stack protector
 # *** stack smashing detected ***: <unknown> terminated
 # Aborted (core dumped)
@@ -185,7 +185,7 @@ set_target_properties(environment_variable_shellcode PROPERTIES LINK_FLAGS "-z e
 # -----------------------------------------------------------------
 
 # Wargames
-add_executable(launch wargames/launch.c)
+add_executable(launch exploit/wargames/launch.c)
 # Get gets
 set_property(TARGET launch PROPERTY C_STANDARD 99)
 # Allow gets
