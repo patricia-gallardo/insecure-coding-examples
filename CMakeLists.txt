@@ -83,7 +83,7 @@ add_executable(commandline practice/commandline.cpp)
 
 add_executable(concat_strings practice/concat_strings.cpp)
 
-add_executable(constexpr_ub practice/constexpr_ub.cpp)
+add_executable(constexpr_ub practice/if_constexpr.cpp)
 target_compile_features(constexpr_ub PRIVATE cxx_std_17)
 target_compile_options(constexpr_ub PRIVATE -Wno-overflow)
 
