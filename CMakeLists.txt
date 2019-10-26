@@ -82,23 +82,23 @@ target_compile_options(undefined_behavior PRIVATE -Wno-overflow)
 #
 # -----------------------------------------------------------------
 
-add_executable(commandline alternative/commandline.cpp)
+add_executable(commandline practice/commandline.cpp)
 
-add_executable(concat_strings alternative/concat_strings.cpp)
+add_executable(concat_strings practice/concat_strings.cpp)
 
-add_executable(downcasting alternative/downcasting.cpp)
+add_executable(downcasting practice/downcasting.cpp)
 
-add_executable(enum_class alternative/enum_class.cpp)
+add_executable(enum_class practice/enum_class.cpp)
 
 # Needs clang 7 or gcc 8
-#add_executable(filesystem alternative/filesystem.cpp)
+#add_executable(filesystem practice/filesystem.cpp)
 #target_compile_features(filesystem PRIVATE cxx_std_17)
 
-add_executable(string_literals alternative/string_literals.cpp)
+add_executable(string_literals practice/string_literals.cpp)
 
-add_executable(strip_after_colon alternative/strip_after_colon.cpp)
+add_executable(strip_after_colon practice/strip_after_colon.cpp)
 
-add_executable(user_defined_literals alternative/user_defined_literals.cpp)
+add_executable(user_defined_literals practice/user_defined_literals.cpp)
 
 
 # -----------------------------------------------------------------
