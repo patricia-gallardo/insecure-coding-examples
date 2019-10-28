@@ -1,0 +1,17 @@
+#include <string>
+#include <iostream>
+
+/**
+ * clang++ -fsanitize=address -o temporary_capture temporary_capture.cpp
+ */
+auto get_printer() {
+  std::string suffix = "World";
+  return [&](const std::string& prefix) {
+    std::cout << prefix << " " << suffix << "\n";
+  };
+}
+
+int main() {
+  auto printer = get_printer();
+  printer("Hello");
+}

@@ -57,6 +57,9 @@ target_compile_options(stack_buffer_overflow PRIVATE -Wno-deprecated-declaration
 # CWE 121 : STACK BUFFER OVERFLOW
 add_executable(stack_buffer_overflow_cwe exploitable/stack_buffer_overflow_cwe.c)
 
+# CWE 416 : USE AFTER FREE
+add_executable(temporary_capture exploitable/temporary_capture.cpp)
+
 # CWE-134 : Use of Externally-Controlled Format String
 add_executable(uncontrolled_format_string exploitable/uncontrolled_format_string.c)
 
