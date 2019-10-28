@@ -10,6 +10,10 @@ project(insecure_coding_examples)
 # CWE 124 : BUFFER UNDERFLOW
 add_executable(buffer_underflow exploitable/buffer_underflow.c)
 
+# CWE 416 : USE AFTER FREE - string_view
+add_executable(dangling_pointer exploitable/dangling_pointer.cpp)
+target_compile_features(dangling_pointer PRIVATE cxx_std_17)
+
 # CWE 14 : DISAPPEARING MEMSET
 add_executable(disappearing_memset exploitable/disappearing_memset.c)
 target_compile_options(disappearing_memset PRIVATE -O3)
