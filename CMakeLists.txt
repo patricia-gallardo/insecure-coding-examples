@@ -190,9 +190,9 @@ set_target_properties(environment_variable_shellcode PROPERTIES LINK_FLAGS "-z e
 
 # Wargames
 add_executable(launch exploit/wargames/launch.c)
-# Get gets
+# Get gets - removed from C11
 set_property(TARGET launch PROPERTY C_STANDARD 99)
-# Allow gets
+# Remove most of the warnings about gets
 target_compile_options(launch PRIVATE -Wno-deprecated-declarations)
 # Remove Fortify protection in libc
 #*** buffer overflow detected ***: ./launch terminated
