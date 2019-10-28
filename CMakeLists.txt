@@ -188,7 +188,8 @@ set_target_properties(environment_variable_shellcode PROPERTIES LINK_FLAGS "-z e
 #
 # -----------------------------------------------------------------
 
-# Wargames
+# Wargames C
+## -------------------------
 add_executable(launch exploit/wargames/launch.c)
 # Get gets - removed from C11
 set_property(TARGET launch PROPERTY C_STANDARD 99)
@@ -203,4 +204,58 @@ target_compile_options(launch PRIVATE -D_FORTIFY_SOURCE=0)
 # Aborted (core dumped)
 target_compile_options(launch PRIVATE -fno-stack-protector)
 # Make the stack executable - otherwise Segmentation fault (core dumped)
-#set_target_properties(launch PROPERTIES LINK_FLAGS "-z execstack")
+set_target_properties(launch PROPERTIES LINK_FLAGS "-z execstack")
+
+# Wargames C++
+# -------------------------
+add_executable(launch_cpp exploit/wargames/launch.cpp)
+# remove the stack protector
+# *** stack smashing detected ***: <unknown> terminated
+# Aborted (core dumped)
+target_compile_options(launch_cpp PRIVATE -fno-stack-protector)
+
+# Wargames Fixed C++
+# -------------------------
+add_executable(launch_fixed_cpp exploit/wargames/launch_fixed.cpp)
+
+# Stack Variable Overwrite Exploit
+# -------------------------
+add_executable(simple_exploit exploit/wargames/stack_variable_exploit.c)
+
+# Wargames C++
+# -------------------------
+add_executable(launch_bigger exploit/wargames/launch_bigger.cpp)
+# remove the stack protector
+# *** stack smashing detected ***: <unknown> terminated
+# Aborted (core dumped)
+target_compile_options(launch_bigger PRIVATE -fno-stack-protector)
+
+# Attempt 1: Shellcode inspirted by Smashing the Stack for Fun and Profit
+# Test
+# -------------------------
+add_executable(simple_stack_overflow_test exploit/wargames/smashing_shellcode_test.c)
+# Exploit
+# -------------------------
+add_executable(simple_stack_overflow_exploit exploit/wargames/smashing_shellcode_exploit.c)
+
+# Attempt 2: Shellcode that pushes the string on the stack to null terminate it
+# Test
+# -------------------------
+add_executable(simple_stack_overflow_test2 exploit/wargames/push_string_shellcode_test.c)
+# Exploit
+# -------------------------
+add_executable(simple_stack_overflow_exploit2 exploit/wargames/push_string_shellcode_exploit.c)
+
+# Attempt 3: Stack Buffer Shellcode in C
+# C code
+# -------------------------
+add_executable(shellcode_tty exploit/wargames/tty_shellcode.c)
+# Inline Asm
+# -------------------------
+add_executable(shellcode_asm exploit/wargames/tty_shellcode_asm.c)
+# Test
+# -------------------------
+add_executable(shellcode_test exploit/wargames/tty_shellcode_test.c)
+# Exploit
+# -------------------------
+add_executable(shellcode_exploit exploit/wargames/tty_shellcode_exploit.c)
