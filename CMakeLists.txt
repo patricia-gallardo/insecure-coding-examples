@@ -3,7 +3,7 @@ project(insecure_coding_examples)
 
 # -----------------------------------------------------------------
 #
-# VULNERABLE
+# EXPLOITABLE
 #
 # -----------------------------------------------------------------
 
@@ -116,11 +116,14 @@ add_executable(strip_after_colon practice/strip_after_colon.cpp)
 
 add_executable(user_defined_literals practice/user_defined_literals.cpp)
 
-
 # -----------------------------------------------------------------
 #
-# SMASHING: From Smashing The Stack For Fun And Profit, Aleph One, Phrack 49
+# EXPLOIT
 #
+# -----------------------------------------------------------------
+
+# -----------------------------------------------------------------
+# SMASHING: From Smashing The Stack For Fun And Profit, Aleph One, Phrack 49
 # -----------------------------------------------------------------
 
 # Shellcode
@@ -166,18 +169,14 @@ target_compile_options(testshellcode PRIVATE -fno-stack-protector)
 set_target_properties(testshellcode PROPERTIES LINK_FLAGS "-z execstack")
 
 # -----------------------------------------------------------------
-#
 # HANDBOOK
-#
 # -----------------------------------------------------------------
 
 # Find stackpointer
 add_executable(find_stackpointer exploit/handbook/find_stackpointer.c)
 
 # -----------------------------------------------------------------
-#
 # FORMAT: Hacking, the Art of Exploitation (Jon Erickson)
-#
 # -----------------------------------------------------------------
 
 add_executable(getenvaddr exploit/format/getenvaddr.c)
@@ -198,9 +197,7 @@ target_compile_options(environment_variable_shellcode PRIVATE -fno-stack-protect
 set_target_properties(environment_variable_shellcode PROPERTIES LINK_FLAGS "-z execstack")
 
 # -----------------------------------------------------------------
-#
 # WARGAMES
-#
 # -----------------------------------------------------------------
 
 # Wargames C
