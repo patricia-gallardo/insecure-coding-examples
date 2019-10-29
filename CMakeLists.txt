@@ -36,18 +36,13 @@ target_compile_options(infinite_loop_cpp PRIVATE -O3 -Waggressive-loop-optimizat
 
 # CWE 197 : NUMERIC TRUNCATION
 add_executable(numeric_truncation exploitable/numeric_truncation.c)
-
-# CWE 197 : NUMERIC TRUNCATION
 add_executable(numeric_truncation_ubsan exploitable/numeric_truncation_ubsan.c)
+add_executable(numeric_truncation_unsafe exploitable/numeric_truncation_unsafe.c)
 
 # CWE 190 : SIGNED INTEGER OVERFLOW
 add_executable(signed_integer_overflow exploitable/signed_integer_overflow.c)
-
-# CWE 190 : SIGNED INTEGER OVERFLOW
-add_executable(signed_integer_overflow_simple exploitable/signed_integer_overflow_simple.c)
-
-# CWE 190 : SIGNED INTEGER OVERFLOW
 add_executable(signed_integer_overflow_ubsan exploitable/signed_integer_overflow_ubsan.c)
+add_executable(signed_integer_overflow_unsafe exploitable/signed_integer_overflow_unsafe.c)
 
 # CWE 121 & CWE 242 : STACK BUFFER OVERFLOW
 add_executable(stack_buffer_overflow exploitable/stack_buffer_overflow.c)
@@ -69,9 +64,8 @@ target_compile_features(unnamed_lock_guard PRIVATE cxx_std_17)
 
 # CWE 190 : UNSIGNED INTEGER WRAPAROUND
 add_executable(unsigned_integer_wraparound exploitable/unsigned_integer_wraparound.c)
-
-# CWE 190 : UNSIGNED INTEGER WRAPAROUND
 add_executable(unsigned_integer_wraparound_ubsan exploitable/unsigned_integer_wraparound_ubsan.c)
+add_executable(unsigned_integer_wraparound_unsafe exploitable/unsigned_integer_wraparound_unsafe.c)
 
 # CWE 416 : USE AFTER FREE
 add_executable(use_after_free exploitable/use_after_free.c)
@@ -102,6 +96,10 @@ target_compile_options(constexpr_ub PRIVATE -Wno-overflow)
 #add_executable(midpoint_library practice/midpoint_library.cpp)
 #target_compile_features(constexpr_ub PRIVATE cxx_std_20)
 
+add_executable(numeric_truncation_safe practice/numeric_truncation_safe.c)
+
+add_executable(signed_integer_overflow_safe practice/signed_integer_overflow_safe.c)
+
 add_executable(downcasting practice/downcasting.cpp)
 
 add_executable(enum_class practice/enum_class.cpp)
@@ -111,6 +109,8 @@ add_executable(enum_class practice/enum_class.cpp)
 #target_compile_features(filesystem PRIVATE cxx_std_17)
 
 add_executable(string_literals practice/string_literals.cpp)
+
+add_executable(unsigned_integer_wraparound_safe practice/unsigned_integer_wraparound_safe.c)
 
 add_executable(strip_after_colon practice/strip_after_colon.cpp)
 

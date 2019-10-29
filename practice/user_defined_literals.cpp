@@ -1,4 +1,3 @@
-
 struct Hours {
   explicit Hours(unsigned long long n) : num(n) {}
   unsigned long long num = 0;
