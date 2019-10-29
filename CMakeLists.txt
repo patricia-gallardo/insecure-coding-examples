@@ -82,13 +82,17 @@ target_compile_options(undefined_behavior PRIVATE -Wno-overflow)
 
 # -----------------------------------------------------------------
 #
-# ALTERNATIVE
+# PRACTICE
 #
 # -----------------------------------------------------------------
 
 add_executable(commandline practice/commandline.cpp)
 
 add_executable(concat_strings practice/concat_strings.cpp)
+
+# Array Pointer Decay
+add_executable(decay practice/decay.cpp)
+target_compile_features(decay PRIVATE cxx_std_17)
 
 add_executable(constexpr_ub practice/if_constexpr.cpp)
 target_compile_features(constexpr_ub PRIVATE cxx_std_17)
