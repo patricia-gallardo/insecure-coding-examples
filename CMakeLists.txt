@@ -94,6 +94,10 @@ add_executable(constexpr_ub practice/if_constexpr.cpp)
 target_compile_features(constexpr_ub PRIVATE cxx_std_17)
 target_compile_options(constexpr_ub PRIVATE -Wno-overflow)
 
+# Needs C++20
+#add_executable(midpoint_library practice/midpoint_library.cpp)
+#target_compile_features(constexpr_ub PRIVATE cxx_std_20)
+
 add_executable(downcasting practice/downcasting.cpp)
 
 add_executable(enum_class practice/enum_class.cpp)
