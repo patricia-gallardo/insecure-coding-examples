@@ -76,6 +76,75 @@ target_compile_options(undefined_behavior PRIVATE -Wno-overflow)
 
 # -----------------------------------------------------------------
 #
+# C++ Core Guidelines
+#
+# -----------------------------------------------------------------
+
+#
+add_executable(use_override practice/guidelines/classes/use_override.cpp)
+
+#
+add_executable(prefer_const practice/guidelines/constants_and_immutability/prefer_const.cpp)
+
+# CPL.1: Prefer C++ to C
+add_executable(prefer_cpp practice/guidelines/CPL/prefer_cpp.cpp)
+
+# Enum.3: Prefer class enums over “plain” enums
+add_executable(prefer_class_enums practice/guidelines/enumerations/prefer_class_enums.cpp)
+
+# ES.103: Don’t overflow
+add_executable(dont_overflow practice/guidelines/expressions_and_statements/dont_overflow.cpp)
+# ES.104: Don’t underflow
+add_executable(dont_underflow practice/guidelines/expressions_and_statements/dont_underflow.cpp)
+# ES.1: Prefer the standard library to other libraries and to “handcrafted code”
+add_executable(prefer_the_standard_library practice/guidelines/expressions_and_statements/prefer_the_standard_library.cpp)
+# ES.20: Always initialize an object
+add_executable(always_initialize practice/guidelines/expressions_and_statements/always_initialize.cpp)
+# ES.27: Use std::array or stack_array for arrays on the stack
+add_executable(use_std_array practice/guidelines/expressions_and_statements/use_std_array.cpp)
+# ES.42: Keep use of pointers simple and straightforward
+#add_executable(cautious_pointer_use practice/guidelines/expressions_and_statements/cautious_pointer_use.cpp)
+add_executable(cautious_pointer_use_decay practice/guidelines/expressions_and_statements/cautious_pointer_use_decay.cpp)
+target_compile_features(cautious_pointer_use_decay PRIVATE cxx_std_17)
+#target_compile_features(cautious_pointer_use PRIVATE cxx_std_20)
+# ES.48: Avoid casts
+add_executable(avoid_casts practice/guidelines/expressions_and_statements/avoid_casts.cpp)
+target_compile_features(avoid_casts PRIVATE cxx_std_17)
+# ES.49: If you must use a cast, use a named cast
+add_executable(use_named_cast practice/guidelines/expressions_and_statements/use_named_cast.cpp)
+add_executable(use_braced_init practice/guidelines/expressions_and_statements/use_braced_init.cpp)
+
+# F.53: Avoid capturing by reference in lambdas that will be used nonlocally, including returned, stored on the heap, or passed to another thread
+add_executable(cautious_reference_capture practice/guidelines/functions/cautious_reference_capture.cpp)
+# F.54: If you capture this, capture all variables explicitly (no default capture)
+add_executable(cautious_this_capture practice/guidelines/functions/cautious_this_capture.cpp)
+add_executable(cautious_this_capture_cpp17 practice/guidelines/functions/cautious_this_capture_cpp17.cpp)
+target_compile_features(cautious_this_capture_cpp17 PRIVATE cxx_std_17)
+
+# NL.11: Make literals readable
+add_executable(prefer_typesafe_literals practice/guidelines/naming_and_layout/prefer_typesafe_literals.cpp)
+
+# I.7: State postconditions
+add_executable(state_postconditions practice/guidelines/interfaces/state_postconditions.cpp)
+
+# R.11: Avoid calling new and delete explicitly
+add_executable(avoid_calling_new_and_delete practice/guidelines/resource_management/avoid_calling_new_and_delete.cpp)
+target_compile_features(avoid_calling_new_and_delete PRIVATE cxx_std_14)
+# R.1: Manage resources automatically using resource handles and RAII (Resource Acquisition Is Initialization)
+add_executable(use_raii practice/guidelines/resource_management/use_raii.cpp)
+
+# SL.con.3: Avoid bounds errors
+add_executable(avoid_bounds_errors practice/guidelines/standard_library/avoid_bounds_errors.cpp)
+# SL.io.3: Prefer iostreams for I/O
+add_executable(prefer_iostreams practice/guidelines/standard_library/prefer_iostreams.cpp)
+# SL.str.1: Use std::string to own character sequences
+add_executable(use_string_for_strings practice/guidelines/standard_library/use_string_for_strings.cpp)
+# SL.str.5: Use std::byte to refer to byte values that do not necessarily represent characters
+add_executable(use_byte_for_non_strings practice/guidelines/standard_library/use_byte_for_non_strings.cpp)
+target_compile_features(use_byte_for_non_strings PRIVATE cxx_std_17)
+
+# -----------------------------------------------------------------
+#
 # PRACTICE
 #
 # -----------------------------------------------------------------
