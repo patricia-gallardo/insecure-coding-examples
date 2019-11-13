@@ -56,11 +56,14 @@ void wait_for_child(pid_t pid) {
 
   int status = 0;
   pid_t child_pid = waitpid(pid, &status, WUNTRACED | WCONTINUED);
-  if (child_pid != -1)
+  if (child_pid != -1) {
     printf("* child %d exited, parent exiting %d\n", child_pid, getpid());
-  else
-    printf("* waitpid returned an error when parent %d waited for child %d\n", getpid(), pid);
-  exit(EXIT_SUCCESS);
+    exit(EXIT_SUCCESS);
+  } else {
+    printf("* waitpid returned an error when parent %d waited for child %d\n",
+           getpid(), pid);
+    exit(EXIT_FAILURE);
+  }
 }
 
 int main(int argc, char *argv[]) {

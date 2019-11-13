@@ -19,7 +19,7 @@ static pid_t clone_child(int flags, jmp_buf *env) {
 void handle_error() {
   printf("* clone returned an error when parent %d tried to clone a child\n",
          getpid());
-  exit(EXIT_SUCCESS);
+  exit(EXIT_FAILURE);
 }
 
 pid_t fake_fork(int flags) {
