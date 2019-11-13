@@ -5,6 +5,7 @@
 #include <sys/wait.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include <errno.h>
 
 /**
  * Based on Michael Kerrisk's 'The Linux Programming Interface'
@@ -60,15 +61,15 @@ void wait_for_child(pid_t pid) {
     printf("* child %d exited, parent exiting %d\n", child_pid, getpid());
     exit(EXIT_SUCCESS);
   } else {
-    printf("* waitpid returned an error when parent %d waited for child %d\n",
-           getpid(), pid);
+    printf("* waitpid returned an error when parent %d waited for child %d: %s\n",
+           getpid(), pid, strerror(errno));
     exit(EXIT_FAILURE);
   }
 }
 
 int main(int argc, char *argv[]) {
 
-  if (argc >= 2) {
+  if (argc < 2) {
     printf("Usage: ./sandbox [-user|-network|-pid|-chroot|-seccomp]\n");
   }
 

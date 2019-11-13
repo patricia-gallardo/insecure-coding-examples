@@ -1,9 +1,10 @@
 #include "fake_fork.h"
 
 #include <setjmp.h>
-#include <zconf.h>
+#include <signal.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <zconf.h>
 
 static int return_from_clone(void *arg) {
   jmp_buf *env_ptr = (jmp_buf *) arg;
@@ -13,7 +14,7 @@ static int return_from_clone(void *arg) {
 static pid_t clone_child(int flags, jmp_buf *env) {
   char stack_buf[PTHREAD_STACK_MIN];
   void *stack = stack_buf + sizeof(stack_buf);
-  return clone(&return_from_clone, stack, flags, env);
+  return clone(&return_from_clone, stack, flags | SIGCHLD, env);
 }
 
 void handle_error() {
