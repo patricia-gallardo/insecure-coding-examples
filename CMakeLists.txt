@@ -145,6 +145,17 @@ target_compile_features(use_byte_for_non_strings PRIVATE cxx_std_17)
 
 # -----------------------------------------------------------------
 #
+# MITIGATION
+#
+# -----------------------------------------------------------------
+
+add_executable(sandbox
+        mitigation/sandbox/sandbox.c
+        mitigation/sandbox/fake_fork.h
+        mitigation/sandbox/fake_fork.c)
+
+# -----------------------------------------------------------------
+#
 # PRACTICE
 #
 # -----------------------------------------------------------------
