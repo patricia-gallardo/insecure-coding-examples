@@ -3,11 +3,17 @@
 #include <errno.h>
 #include <ifaddrs.h>
 #include <grp.h>
+#include <linux/audit.h>
+#include <linux/filter.h>
+#include <linux/seccomp.h>
+#include <linux/unistd.h>
 #include <pwd.h>
+#include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <sys/fsuid.h>
+#include <sys/prctl.h>
 #include <sys/wait.h>
 #include <unistd.h>
 
@@ -168,7 +174,6 @@ int main(int argc, char *argv[]) {
       case MODE_ERROR:
       default:
         exit(EXIT_FAILURE);
-        break;
     }
 
     if (pid == 0)
@@ -207,4 +212,37 @@ void detatch_from_filesystem() {
 
 void restrict_syscalls() {
   printf("\n%s\n", __PRETTY_FUNCTION__);
+
+  if (prctl(PR_SET_NO_NEW_PRIVS, 1, 0, 0, 0) != 0)
+    printf("* prctl(PR_SET_NO_NEW_PRIVS) failed\n");
+
+  //prctl(PR_SET_SECCOMP, SECCOMP_MODE_STRICT);
+
+#if 0
+  struct sock_filter filter[] = {
+      BPF_STMT(BPF_LD | BPF_W | BPF_ABS, (offsetof(
+          struct seccomp_data, arch))),
+      BPF_JUMP(BPF_JMP | BPF_JEQ | BPF_K, AUDIT_ARCH_X86_64, 1, 0),
+      BPF_STMT(BPF_RET | BPF_K, SECCOMP_RET_KILL),
+      BPF_STMT(BPF_LD | BPF_W | BPF_ABS, (offsetof(
+          struct seccomp_data, nr))),
+      BPF_JUMP(BPF_JMP | BPF_JEQ | BPF_K, __NR_read, 1, 0),
+      BPF_STMT(BPF_RET | BPF_K, SECCOMP_RET_ALLOW),
+      BPF_JUMP(BPF_JMP | BPF_JEQ | BPF_K, __NR_write, 1, 0),
+      BPF_STMT(BPF_RET | BPF_K, SECCOMP_RET_ALLOW),
+      BPF_JUMP(BPF_JMP | BPF_JEQ | BPF_K, __NR_exit, 1, 0),
+      BPF_STMT(BPF_RET | BPF_K, SECCOMP_RET_ALLOW),
+      BPF_JUMP(BPF_JMP | BPF_JEQ | BPF_K, __NR_rt_sigreturn, 1, 0),
+      BPF_STMT(BPF_RET | BPF_K, SECCOMP_RET_ALLOW),
+      BPF_STMT(BPF_RET | BPF_K, SECCOMP_RET_KILL)
+  };
+
+  const struct sock_fprog prog = {
+      .len = (unsigned short) (sizeof(filter) / sizeof(filter[0])),
+      .filter = filter,
+  };
+
+  if (prctl(PR_SET_SECCOMP, 2, &prog) != 0)
+    printf("* prctl(PR_SET_SECCOMP) failed\n");
+#endif
 }
