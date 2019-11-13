@@ -1,14 +1,15 @@
 #include "fake_fork.h"
 
+#include <errno.h>
+#include <ifaddrs.h>
+#include <grp.h>
+#include <pwd.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include <sys/fsuid.h>
 #include <sys/wait.h>
 #include <unistd.h>
-#include <stdlib.h>
-#include <errno.h>
-#include <pwd.h>
-#include <grp.h>
 
 /**
  * Based on Michael Kerrisk's 'The Linux Programming Interface'
@@ -81,6 +82,27 @@ char *group_name(gid_t gid) {
   return grp ? grp->gr_name : NULL;
 }
 
+int count_interfaces(struct ifaddrs *ifaddr) {
+  int num_interfaces = 0;
+  for (struct ifaddrs *ifa = ifaddr;
+       ifa != NULL;
+       ifa = ifa->ifa_next, num_interfaces++);
+  return num_interfaces;
+}
+
+int num_network_interfaces(void) {
+  struct ifaddrs *ifaddr = NULL;
+
+  if (getifaddrs(&ifaddr) == -1) {
+    printf("* getifaddrs failed\n");
+    return 0;
+  }
+
+  int num_interfaces = count_interfaces(ifaddr);
+  freeifaddrs(ifaddr);
+  return num_interfaces;
+}
+
 void explore_state(int i) {
   printf("\n%d. Current\n", i);
   char *cwd = get_current_dir_name();
@@ -109,7 +131,9 @@ void explore_state(int i) {
   printf("GID saved     (%d): %s\n", sgid, group_name(sgid));
   printf("GID fs        (%d): %s\n", fsgid, group_name(fsgid));
   printf("cwd  = %s\n", cwd);
+  printf("num of network interfaces: %d\n", num_network_interfaces());
   printf("--------------------------------------\n");
+
   free(cwd);
 }
 
