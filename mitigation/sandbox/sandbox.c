@@ -2,10 +2,13 @@
 
 #include <stdio.h>
 #include <string.h>
+#include <sys/fsuid.h>
 #include <sys/wait.h>
 #include <unistd.h>
 #include <stdlib.h>
 #include <errno.h>
+#include <pwd.h>
+#include <grp.h>
 
 /**
  * Based on Michael Kerrisk's 'The Linux Programming Interface'
@@ -55,16 +58,59 @@ void wait_for_child(pid_t pid) {
     return;
   }
 
-  int status = 0;
+  int status = -1;
   pid_t child_pid = waitpid(pid, &status, WUNTRACED | WCONTINUED);
   if (child_pid != -1) {
     printf("* child %d exited, parent exiting %d\n", child_pid, getpid());
     exit(EXIT_SUCCESS);
   } else {
-    printf("* waitpid returned an error when parent %d waited for child %d: %s\n",
-           getpid(), pid, strerror(errno));
+    printf(
+        "* waitpid returned an error when parent %d waited for child %d: %s\n",
+        getpid(), pid, strerror(errno));
     exit(EXIT_FAILURE);
   }
+}
+
+char *user_name(uid_t uid) {
+  struct passwd *pwd = getpwuid(uid);
+  return pwd ? pwd->pw_name : NULL;
+}
+
+char *group_name(gid_t gid) {
+  struct group *grp = getgrgid(gid);
+  return grp ? grp->gr_name : NULL;
+}
+
+void explore_state(int i) {
+  printf("\n%d. Current\n", i);
+  char *cwd = get_current_dir_name();
+
+  uid_t ruid, euid, suid = 0;
+  gid_t rgid, egid, sgid = 0;
+
+  if (getresuid(&ruid, &euid, &suid) == -1)
+    printf("* getresuid failed\n");
+
+  if (getresgid(&rgid, &egid, &sgid) == -1)
+    printf("* getresgid failed\n");
+
+  uid_t fsuid = setfsuid(0);
+  gid_t fsgid = setfsgid(0);
+
+  printf("--------------------------------------\n");
+  printf("pid  = %d\n", getpid());
+  printf("ppid = %d\n", getppid());
+  printf("UID real      (%d): %s\n", ruid, user_name(ruid));
+  printf("UID effective (%d): %s\n", euid, user_name(euid));
+  printf("UID saved     (%d): %s\n", suid, user_name(suid));
+  printf("UID fs        (%d): %s\n", fsuid, user_name(fsuid));
+  printf("GID real      (%d): %s\n", rgid, group_name(rgid));
+  printf("GID effective (%d): %s\n", egid, group_name(egid));
+  printf("GID saved     (%d): %s\n", sgid, group_name(sgid));
+  printf("GID fs        (%d): %s\n", fsgid, group_name(fsgid));
+  printf("cwd  = %s\n", cwd);
+  printf("--------------------------------------\n");
+  free(cwd);
 }
 
 int main(int argc, char *argv[]) {
@@ -77,7 +123,7 @@ int main(int argc, char *argv[]) {
 
     enum Mode mode = getMode(argv[i]);
     pid_t pid = getpid();
-    printf("\n%d. Current - pid %d\n", i, pid);
+    explore_state(i);
 
     switch (mode) {
       case USER_NAMESPACE:
@@ -129,6 +175,10 @@ pid_t create_pid_namespace() {
 
 void detatch_from_filesystem() {
   printf("\n%s\n", __PRETTY_FUNCTION__);
+  if (!detach_in_child()) {
+    printf("* failed to detach in child for pid %d\n", getpid());
+    exit(EXIT_FAILURE);
+  }
 }
 
 void restrict_syscalls() {
