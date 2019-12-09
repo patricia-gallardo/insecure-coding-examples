@@ -270,6 +270,10 @@ target_compile_options(format_exploitable PRIVATE -Wno-format-security)
 add_executable(format_exploitable_simple exploit/format/exploitable_simple.c)
 target_compile_options(format_exploitable_simple PRIVATE -Wno-format-security)
 
+add_executable(chars_written exploit/format/chars_written.c)
+add_executable(direct_access exploit/format/direct_access.c)
+add_executable(field_width exploit/format/field_width.c)
+
 # Shellcode test
 add_executable(environment_variable_shellcode exploit/format/environment_variable_shellcode.c)
 # remove the stack protector
