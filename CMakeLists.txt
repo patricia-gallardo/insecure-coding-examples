@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.10)
-project(insecure_coding_examples)
+project(insecure_coding_examples CXX C)
 
 # -----------------------------------------------------------------
 #
@@ -142,17 +142,6 @@ add_executable(use_string_for_strings practice/guidelines/standard_library/use_s
 # SL.str.5: Use std::byte to refer to byte values that do not necessarily represent characters
 add_executable(use_byte_for_non_strings practice/guidelines/standard_library/use_byte_for_non_strings.cpp)
 target_compile_features(use_byte_for_non_strings PRIVATE cxx_std_17)
-
-# -----------------------------------------------------------------
-#
-# MITIGATION
-#
-# -----------------------------------------------------------------
-
-add_executable(sandbox
-        mitigation/sandbox/sandbox.c
-        mitigation/sandbox/fake_fork.h
-        mitigation/sandbox/fake_fork.c)
 
 # -----------------------------------------------------------------
 #
