@@ -1,19 +1,17 @@
 struct Hours {
-  explicit Hours(unsigned long long n) : num(n) {}
   unsigned long long num = 0;
 };
 
 struct Days {
-  explicit Days(unsigned long long n) : num(n) {}
   unsigned long long num = 0;
 };
 
 Hours operator "" _hours(unsigned long long num) {
-  return Hours(num);
+  return Hours{num};
 }
 
 Days operator "" _days(unsigned long long num) {
-  return Days(num);
+  return Days{num};
 }
 
 int main() {
