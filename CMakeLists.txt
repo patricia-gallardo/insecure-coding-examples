@@ -21,6 +21,12 @@ target_compile_options(disappearing_memset PRIVATE -O3)
 # CWE 415 : DOUBLE FREE
 add_executable(double_free exploitable/double_free.c)
 
+# CWE-119: Improper Restriction of Operations within the Bounds of a Memory Buffer
+add_executable(global_buffer_overflow exploitable/global_buffer_overflow.c)
+
+# CWE-119: Improper Restriction of Operations within the Bounds of a Memory Buffer
+add_executable(container_overflow exploitable/container_overflow.cpp)
+
 # CWE 122 : HEAP BUFFER OVERFLOW
 add_executable(heap_buffer_overflow exploitable/heap_buffer_overflow.c)
 
