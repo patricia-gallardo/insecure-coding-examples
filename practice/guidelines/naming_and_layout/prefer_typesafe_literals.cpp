@@ -2,23 +2,23 @@
  * NL.11: Make literals readable
  * https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#nl11-make-literals-readable
  */
-struct Hours {
-  explicit Hours(unsigned long long n) : num(n) {}
+struct Pixels {
+  explicit Pixels(unsigned long long n) : num(n) {}
   unsigned long long num = 0;
-  Hours operator+(const Hours& other) { return Hours(num + other.num); }
+  Pixels operator+(const Pixels & other) { return Pixels(num + other.num); }
 };
 
-struct Days {
-  explicit Days(unsigned long long n) : num(n) {}
+struct Percent {
+  explicit Percent(unsigned long long n) : num(n) {}
   unsigned long long num = 0;
-  Days operator+(const Days& other) { return Days(num + other.num); }
+  Percent operator+(const Percent & other) { return Percent(num + other.num); }
 };
 
-Hours operator "" _hours(unsigned long long num) { return Hours(num); }
-Days operator "" _days(unsigned long long num) { return Days(num); }
+Pixels operator "" _px(unsigned long long num) { return Pixels(num); }
+Percent operator "" _percent(unsigned long long num) { return Percent(num); }
 
 int main() {
-  //auto err = 24_hours + 7_days; // Compile error
-  auto days = 4_days + 5_days;
-  auto hours = 4_hours + 5_hours;
+  //auto width = 24_px + 7_percent; // Compile error
+  auto percent = 4_percent + 5_percent;
+  auto pixels = 4_px + 5_px;
 }

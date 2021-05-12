@@ -1,23 +1,23 @@
-struct Hours {
+struct Pixels {
   unsigned long long num = 0;
 };
 
-struct Days {
+struct Percent {
   unsigned long long num = 0;
 };
 
-Hours operator "" _hours(unsigned long long num) {
-  return Hours{num};
+Pixels operator "" _px(unsigned long long num) {
+  return Pixels{num};
 }
 
-Days operator "" _days(unsigned long long num) {
-  return Days{num};
+Percent operator "" _percent(unsigned long long num) {
+  return Percent{num};
 }
 
 int main() {
-  auto h = 24_hours;
-  auto d = 7_days;
+  auto pixels = 24_px;
+  auto percent = 7_percent;
 
   // Will give a build error:
-  // auto err = h + d;
+  // auto width = pixels + percent;
 }
