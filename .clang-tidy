@@ -1,0 +1,2 @@
+Checks:              'modernize-*,-modernize-use-nodiscard,-modernize-use-trailing-return-type,cppcoreguidelines-*,bugprone-*,-cppcoreguidelines-non-private-member-variables-in-classes,-cppcoreguidelines-avoid-magic-numbers,-cppcoreguidelines-avoid-non-const-global-variables,-cppcoreguidelines-owning-memory,-cppcoreguidelines-pro-bounds-*,-readability-convert-member-functions-to-static'
+WarningsAsErrors: '*'
