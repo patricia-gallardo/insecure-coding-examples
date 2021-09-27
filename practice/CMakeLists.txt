@@ -31,8 +31,8 @@ add_executable(downcasting downcasting.cpp)
 add_executable(enum_class enum_class.cpp)
 
 # Needs clang 7 or gcc 8
-#add_executable(filesystem filesystem.cpp)
-#target_compile_features(filesystem PRIVATE cxx_std_17)
+add_executable(filesystem filesystem.cpp)
+target_compile_features(filesystem PRIVATE cxx_std_17)
 
 add_executable(string_literals string_literals.cpp)
 
