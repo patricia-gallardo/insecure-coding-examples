@@ -1,4 +1,3 @@
-# Code examples for the talk Secure Coding Practices in C++
+# Code examples for slides in the training "(In)Secure C++ - Secure Coding Practices in C++"
 
-Shellcode exercise
-[https://github.com/patricia-gallardo/insecure-simple-exploit-boilerplate]
+https://turtlesec.no/blog/insecure-cpp/
