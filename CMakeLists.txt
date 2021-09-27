@@ -2,85 +2,8 @@ cmake_minimum_required(VERSION 3.10)
 project(insecure_coding_examples CXX C)
 
 add_subdirectory(exploit)
-
-# -----------------------------------------------------------------
-#
-# EXPLOITABLE
-#
-# -----------------------------------------------------------------
-
-# CWE 124 : BUFFER UNDERFLOW
-add_executable(buffer_underflow exploitable/buffer_underflow.c)
-
-# CWE 416 : USE AFTER FREE - string_view
-add_executable(dangling_pointer exploitable/dangling_pointer.cpp)
-target_compile_features(dangling_pointer PRIVATE cxx_std_17)
-
-# CWE 14 : DISAPPEARING MEMSET
-add_executable(disappearing_memset exploitable/disappearing_memset.c)
-target_compile_options(disappearing_memset PRIVATE -O3)
-
-# CWE 415 : DOUBLE FREE
-add_executable(double_free exploitable/double_free.c)
-
-# CWE-119: Improper Restriction of Operations within the Bounds of a Memory Buffer
-add_executable(global_buffer_overflow exploitable/global_buffer_overflow.c)
-
-# CWE-119: Improper Restriction of Operations within the Bounds of a Memory Buffer
-add_executable(container_overflow exploitable/container_overflow.cpp)
-
-# CWE 122 : HEAP BUFFER OVERFLOW
-add_executable(heap_buffer_overflow exploitable/heap_buffer_overflow.c)
-
-# CWE 122 : HEAP BUFFER OVERFLOW
-add_executable(heap_buffer_overflow_cwe exploitable/heap_buffer_overflow_cwe.c)
-
-# CWE 704 : INCORRECT TYPE CONVERSION
-add_executable(incorrect_type_conversion exploitable/incorrect_type_conversion.cpp)
-
-# INFINITE LOOP CPP
-add_executable(infinite_loop_cpp exploitable/infinite_loop.cpp)
-target_compile_options(infinite_loop_cpp PRIVATE -O3 -Waggressive-loop-optimizations)
-
-# CWE 197 : NUMERIC TRUNCATION
-add_executable(numeric_truncation exploitable/numeric_truncation.c)
-add_executable(numeric_truncation_ubsan exploitable/numeric_truncation_ubsan.c)
-add_executable(numeric_truncation_unsafe exploitable/numeric_truncation_unsafe.c)
-
-# CWE 190 : SIGNED INTEGER OVERFLOW
-add_executable(signed_integer_overflow exploitable/signed_integer_overflow.c)
-add_executable(signed_integer_overflow_ubsan exploitable/signed_integer_overflow_ubsan.c)
-add_executable(signed_integer_overflow_unsafe exploitable/signed_integer_overflow_unsafe.c)
-
-# CWE 121 & CWE 242 : STACK BUFFER OVERFLOW
-add_executable(stack_buffer_overflow exploitable/stack_buffer_overflow.c)
-set_property(TARGET stack_buffer_overflow PROPERTY C_STANDARD 99)
-target_compile_options(stack_buffer_overflow PRIVATE -Wno-deprecated-declarations)
-
-# CWE 121 : STACK BUFFER OVERFLOW
-add_executable(stack_buffer_overflow_cwe exploitable/stack_buffer_overflow_cwe.c)
-
-# CWE 416 : USE AFTER FREE
-add_executable(temporary_capture exploitable/temporary_capture.cpp)
-
-# CWE-134 : Use of Externally-Controlled Format String
-add_executable(uncontrolled_format_string exploitable/uncontrolled_format_string.c)
-
-# UNNAMED LOCK GUARD
-add_executable(unnamed_lock_guard exploitable/unnamed_lock_guard.cpp)
-target_compile_features(unnamed_lock_guard PRIVATE cxx_std_17)
-
-# CWE 190 : UNSIGNED INTEGER WRAPAROUND
-add_executable(unsigned_integer_wraparound exploitable/unsigned_integer_wraparound.c)
-add_executable(unsigned_integer_wraparound_ubsan exploitable/unsigned_integer_wraparound_ubsan.c)
-add_executable(unsigned_integer_wraparound_unsafe exploitable/unsigned_integer_wraparound_unsafe.c)
-
-# CWE 416 : USE AFTER FREE
-add_executable(use_after_free exploitable/use_after_free.c)
-
-# COMPILER OPTIMIZATIONS OF UNDEFINED BEHAVIOR
-add_executable(undefined_behavior exploitable/undefined_behavior.cpp)
-target_compile_options(undefined_behavior PRIVATE -Wno-overflow)
+add_subdirectory(exploitable)
+add_subdirectory(vulnerability)
 
 # -----------------------------------------------------------------
 #
