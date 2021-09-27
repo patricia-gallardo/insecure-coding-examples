@@ -1,5 +1,5 @@
-#include <string>
 #include <iostream>
+#include <string>
 
 /**
  * SL.str.1: Use std::string to own character sequences

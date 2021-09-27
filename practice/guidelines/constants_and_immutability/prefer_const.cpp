@@ -5,6 +5,7 @@
 class Point {
   int _x = 0;
   int _y = 0;
+
 public:
   int x() const { return _x; }
   int y() const { return _y; }

@@ -1,6 +1,6 @@
-#include <iterator>
 #include <algorithm>
 #include <iostream>
+#include <iterator>
 
 /**
  * ES.1: Prefer the standard library to other libraries and to “handcrafted code”

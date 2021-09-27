@@ -2,10 +2,10 @@
 #include <iterator>
 
 /**
-* ES.42: Keep use of pointers simple and straightforward
-* https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#es42-keep-use-of-pointers-simple-and-straightforward
-*/
-void decay(const int* ages) {
+ * ES.42: Keep use of pointers simple and straightforward
+ * https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#es42-keep-use-of-pointers-simple-and-straightforward
+ */
+void decay(const int * ages) {
   std::cout << sizeof(ages) << '\n'; // Size of the pointer = 8
 }
 

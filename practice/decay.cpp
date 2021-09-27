@@ -1,10 +1,10 @@
 #include <iostream>
 
-void decay(const int* ages) {
+void decay(const int * ages) {
   // Size of the pointer = 8
   std::cout << sizeof(ages) << '\n';
   // Compile Error
-  //std::cout << std::size(ages) << '\n';
+  // std::cout << std::size(ages) << '\n';
 }
 
 int main() {

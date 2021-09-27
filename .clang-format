@@ -7,7 +7,7 @@ AlwaysBreakAfterReturnType: None
 BreakBeforeBraces: Custom
 BreakConstructorInitializers: BeforeColon
 BreakInheritanceList: BeforeColon
-ColumnLimit: '0'
+ColumnLimit: '70'
 ConstructorInitializerAllOnOneLineOrOnePerLine: true
 PenaltyReturnTypeOnItsOwnLine: '10000'
 PointerAlignment: Middle

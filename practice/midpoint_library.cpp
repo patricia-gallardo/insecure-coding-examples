@@ -1,7 +1,7 @@
 #include <cstdint>
+#include <iostream>
 #include <limits>
 #include <numeric>
-#include <iostream>
 
 /**
  * Modified example from: https://en.cppreference.com/w/cpp/numeric/midpoint

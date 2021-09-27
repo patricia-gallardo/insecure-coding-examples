@@ -1,7 +1,7 @@
-#include <string>
+#include <algorithm>
 #include <array>
 #include <iostream>
-#include <algorithm>
+#include <string>
 
 /**
  * ES.27: Use std::array or stack_array for arrays on the stack

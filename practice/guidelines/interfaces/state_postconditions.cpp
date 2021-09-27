@@ -1,6 +1,6 @@
-#include <cstring>
 #include <cassert>
 #include <cstdio>
+#include <cstring>
 
 /**
  * I.7: State postconditions

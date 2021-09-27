@@ -5,9 +5,9 @@ using namespace std::literals::string_literals;
 
 int main() {
 
-  auto heroes = {"Spiderman"s, "Ironman"s, "Wonder Woman"s};
+  auto heroes = { "Spiderman"s, "Ironman"s, "Wonder Woman"s };
 
-  for(auto const & hero : heroes) {
+  for (auto const & hero : heroes) {
     std::cout << "\t" << hero << " (" << hero.size() << ")\n";
   }
 }

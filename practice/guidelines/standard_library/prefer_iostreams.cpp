@@ -1,5 +1,5 @@
-#include <string>
 #include <iostream>
+#include <string>
 
 /**
  * SL.io.3: Prefer iostreams for I/O

@@ -1,18 +1,18 @@
-#include <variant>
 #include <iostream>
+#include <variant>
 
 /**
  * ES.48: Avoid casts
  * https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#es48-avoid-casts
  */
- struct Point {
-   int x = 0;
-   int y = 0;
- };
- struct Line {
-   Point start;
-   Point end;
- };
+struct Point {
+  int x = 0;
+  int y = 0;
+};
+struct Line {
+  Point start;
+  Point end;
+};
 int main() {
   std::variant<Point, Line> rep = Line();
   Line line = std::get<Line>(rep);

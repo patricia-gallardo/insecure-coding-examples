@@ -1,6 +1,6 @@
+#include <algorithm>
 #include <array>
 #include <iostream>
-#include <algorithm>
 
 /**
  * SL.con.3: Avoid bounds errors
@@ -13,6 +13,7 @@ int main() {
 
   std::array<int, 10> needs_zeroing;
   needs_zeroing.fill(0);
-  std::for_each(needs_zeroing.begin(), needs_zeroing.end(), 
-                [](const int& n) { std::cout << n; });
+  std::for_each(needs_zeroing.begin(),
+                needs_zeroing.end(),
+                [](const int & n) { std::cout << n; });
 }

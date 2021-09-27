@@ -6,12 +6,12 @@ struct Percent {
   unsigned long long num = 0;
 };
 
-Pixels operator "" _px(unsigned long long num) {
-  return Pixels{num};
+Pixels operator"" _px(unsigned long long num) {
+  return Pixels{ num };
 }
 
-Percent operator "" _percent(unsigned long long num) {
-  return Percent{num};
+Percent operator"" _percent(unsigned long long num) {
+  return Percent{ num };
 }
 
 int main() {

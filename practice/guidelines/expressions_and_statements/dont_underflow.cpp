@@ -1,5 +1,5 @@
-#include <climits>
 #include <cassert>
+#include <climits>
 
 /**
  * ES.104: Don’t underflow

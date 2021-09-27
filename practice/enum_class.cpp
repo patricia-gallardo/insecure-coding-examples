@@ -1,11 +1,15 @@
-#include <type_traits>
-#include <ostream>
 #include <iostream>
+#include <ostream>
+#include <type_traits>
 
-enum class Direction : char
-{ NORTH = 'N', EAST  = 'E', WEST  = 'W', SOUTH = 'S' };
+enum class Direction : char {
+  NORTH = 'N',
+  EAST  = 'E',
+  WEST  = 'W',
+  SOUTH = 'S'
+};
 
-std::ostream& operator << (std::ostream& os, const Direction& obj) {
+std::ostream & operator<<(std::ostream & os, const Direction & obj) {
   os << static_cast<std::underlying_type<Direction>::type>(obj);
   return os;
 }
