@@ -1,0 +1,51 @@
+name: CMake
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    name: "${{ matrix.config.name }} | ${{ matrix.CMAKE_BUILD_TYPE }}"
+    runs-on: ${{ matrix.config.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        config:
+          - name: Ubuntu 18.04
+            os: ubuntu-18.04
+            CMAKE_C_COMPILER: clang
+            CMAKE_CXX_COMPILER: clang++
+          - name: Ubuntu 20.04
+            os: ubuntu-20.04
+            CMAKE_C_COMPILER: clang
+            CMAKE_CXX_COMPILER: clang++
+          - name: MacOS 10.15
+            os: macos-10.15
+            CMAKE_C_COMPILER: clang
+            CMAKE_CXX_COMPILER: clang++
+        CMAKE_BUILD_TYPE: [Debug, Release]
+
+    steps:
+    - uses: actions/checkout@v2
+    - uses: turtlebrowser/get-conan@main
+
+    - name: Install Linux dependencies
+      if: startsWith(matrix.config.os, 'ubuntu')
+      run: sudo apt install libpulse-dev
+
+    - name: Install Linux 32-bit compat libs
+      if: startsWith(matrix.config.os, 'ubuntu')
+      run: sudo apt-get install gcc-multilib g++-multilib
+
+    - name: Configure CMake
+      run: cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{matrix.CMAKE_BUILD_TYPE}} -DCMAKE_C_COMPILER=${{matrix.config.CMAKE_C_COMPILER}} -DCMAKE_CXX_COMPILER=${{matrix.config.CMAKE_CXX_COMPILER}}
+
+    - name: Build
+      run: cmake --build ${{github.workspace}}/build --config ${{matrix.CMAKE_BUILD_TYPE}}
+
+    - name: Test
+      working-directory: ${{github.workspace}}/build
+      run: ctest -C ${{matrix.CMAKE_BUILD_TYPE}}
