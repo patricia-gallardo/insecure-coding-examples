@@ -5,5 +5,5 @@ static inline void free_buffer(char ** buffer_ptr) {
   free(*buffer_ptr);
 }
 int main(void) {
-  RAII(free_buffer) char * buffer = (char *)malloc(256);
+  RAII(free_buffer) char * buffer = malloc(256);
 }
