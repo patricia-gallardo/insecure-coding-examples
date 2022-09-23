@@ -6,14 +6,14 @@
  */
 
 class Powers {};
-class Audio {
+class Hero {
   Powers p;
 };
 
 int main() {
-  Audio stackHero;
+  Hero stackHero;
 
-  auto myHero = std::make_unique<Audio>();
+  auto myHero = std::make_unique<Hero>();
 
-  auto ourHero = std::make_shared<Audio>();
+  auto ourHero = std::make_shared<Hero>();
 }
