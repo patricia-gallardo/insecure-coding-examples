@@ -1,6 +1,6 @@
 #include <string>
 
-void process() {
+int main() {
   std::string buffer;
   buffer.resize(255);
 }
