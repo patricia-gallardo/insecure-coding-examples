@@ -9,7 +9,9 @@ class Point {
 public:
   int x() const { return _x; }
   int y() const { return _y; }
-  [[nodiscard]] bool is_valid() const { return (_x > 0) && (_y > 0); }
+  [[nodiscard]] bool is_valid() const {
+    return (_x > 0) && (_y > 0);
+  }
 };
 
 int main() {
