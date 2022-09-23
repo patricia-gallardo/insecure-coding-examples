@@ -4,13 +4,15 @@
 
 /**
  * Integer Overflow or Wraparound
+ * Signed Integer Overflow is Undefined Behavior
  * https://cwe.mitre.org/data/definitions/190.html
  */
 static bool isSafe(int first, int second, int buf_len) {
-  if (((second > 0) && (first > (INT_MAX - second))) ||
-      ((second < 0) && (first < (INT_MIN - second))))
+  bool sec_neg = second < 0;
+  bool sec_pos = second > 0;
+  if ((sec_pos && (first > (INT_MAX - second))) ||
+      (sec_neg && (first < (INT_MIN - second))))
     return false;
-  // Signed Integer Overflow is Undefined Behavior
   int len_sum = first + second;
   return (len_sum <= buf_len);
 }
