@@ -27,6 +27,8 @@ add_executable(downcasting downcasting.cpp)
 
 add_executable(enum_class enum_class.cpp)
 
+add_executable(safe_integer_comparisons safe_integer_comparisons.cpp)
+
 # Needs clang 7 or gcc 8
 add_executable(filesystem filesystem.cpp)
 
