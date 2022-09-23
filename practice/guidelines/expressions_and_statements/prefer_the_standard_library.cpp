@@ -10,9 +10,12 @@ int main() {
   std::string str = "Hello:World";
   // Predicate
   auto isColon = [](int ch) { return ch == ':'; };
-  // The last element satisfying the predicate or the first element if not found
+  // The last element satisfying the predicate
+  // or the first element if not found
   // Searching from the end backwards
-  auto first = std::find_if(std::rbegin(str), std::rend(str), isColon);
+  auto first = std::find_if(std::rbegin(str),
+                            std::rend(str),
+                            isColon);
   std::cout << str << "\n";
 
   // If found - delete everything after
