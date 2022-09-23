@@ -16,5 +16,6 @@ struct Line {
 int main() {
   std::variant<Point, Line> rep = Line();
   Line line = std::get<Line>(rep);
-  std::cout << "From x " << line.start.x << " to x " << line.end.x;
+  std::cout << "From x " << line.start.x
+            << " to x " << line.end.x;
 }
