@@ -7,7 +7,10 @@ class Point {
   int y = 0;
 
 public:
-  Point(int x, int y) : x(x), y(y) {} // member initializer list
+  // member initializer list
+  Point(int x, int y)
+    : x(x),
+      y(y) {}
 };
 
 int main() {
