@@ -7,7 +7,9 @@
  * https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#Rf-value-capture
  */
 auto addNumber(int number) {
-  return [number](int other) { return number + other; };
+  return [number](int other) {
+    return number + other;
+  };
 }
 int main() {
   auto addTwo = addNumber(2);
