@@ -7,13 +7,13 @@
  * Signed Integer Overflow is Undefined Behavior
  * https://cwe.mitre.org/data/definitions/190.html
  */
-static bool isSafe(int first, int second, int buf_len) {
-  bool sec_neg = second < 0;
-  bool sec_pos = second > 0;
-  if ((sec_pos && (first > (INT_MAX - second))) ||
-      (sec_neg && (first < (INT_MIN - second))))
+bool isSafe(int first_len, int second_len, int buf_len) {
+  bool sec_pos = (second_len > 0);
+  bool sec_neg = (second_len < 0);
+  if ((sec_pos && (first_len > (INT_MAX - second_len))) ||
+      (sec_neg && (first_len < (INT_MIN - second_len))))
     return false;
-  int len_sum = first + second;
+  int len_sum = first_len + second_len;
   return (len_sum <= buf_len);
 }
 
