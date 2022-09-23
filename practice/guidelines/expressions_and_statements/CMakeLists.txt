@@ -11,13 +11,10 @@ add_executable(always_initialize always_initialize.cpp)
 # ES.27: Use std::array or stack_array for arrays on the stack
 add_executable(use_std_array use_std_array.cpp)
 # ES.42: Keep use of pointers simple and straightforward
-#add_executable(cautious_pointer_use cautious_pointer_use.cpp)
+add_executable(cautious_pointer_use cautious_pointer_use.cpp)
 add_executable(cautious_pointer_use_decay cautious_pointer_use_decay.cpp)
-target_compile_features(cautious_pointer_use_decay PRIVATE cxx_std_17)
-#target_compile_features(cautious_pointer_use PRIVATE cxx_std_20)
 # ES.48: Avoid casts
 add_executable(avoid_casts avoid_casts.cpp)
-target_compile_features(avoid_casts PRIVATE cxx_std_17)
 # ES.49: If you must use a cast, use a named cast
 add_executable(use_named_cast use_named_cast.cpp)
 add_executable(use_braced_init use_braced_init.cpp)
