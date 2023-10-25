@@ -30,7 +30,7 @@ jobs:
 
     - name: Install Linux dependencies
       if: startsWith(matrix.config.os, 'ubuntu')
-      run: sudo apt install libpulse-dev
+      run: sudo apt install libpulse-dev clang-12
 
     - name: Install Linux 32-bit compat libs
       if: startsWith(matrix.config.os, 'ubuntu')
